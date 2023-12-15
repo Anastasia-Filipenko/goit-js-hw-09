@@ -2,8 +2,6 @@ const key = 'feedback-form-state';
 
 const form = document.querySelector('.feedback-form');
 
-const formObject = {};
-
 let localStorageData;
 
 try {
@@ -23,7 +21,7 @@ if (localStorageData) {
 
 form.addEventListener('input', () => {
   const formData = new FormData(form);
-
+  const formObject = {};
   formData.forEach((value, key) => {
     formObject[key] = value;
   });
@@ -34,8 +32,8 @@ form.addEventListener('input', () => {
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  if (form.elements[1].value.length > 0 && form.elements[0].value.length) {
-    console.log(formObject);
+  if (form.elements[1].value.length > 0 && form.elements[0].value.length > 0) {
+    console.log(localStorageData);
     localStorage.removeItem(key);
     form.reset();
   } else {
