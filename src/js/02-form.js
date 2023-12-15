@@ -12,12 +12,14 @@ try {
   console.log(e);
 }
 
-Array.from(form.elements).forEach(element => {
-  const storageValue = localStorageData[element.name];
-  if (storageValue) {
-    element.value = storageValue;
-  }
-});
+if (localStorageData) {
+  Array.from(form.elements).forEach(element => {
+    const storageValue = localStorageData[element.name];
+    if (storageValue) {
+      element.value = storageValue;
+    }
+  });
+}
 
 form.addEventListener('input', () => {
   const formData = new FormData(form);
